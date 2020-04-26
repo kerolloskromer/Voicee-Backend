@@ -38,8 +38,17 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'authentication',
     'posts'
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.SessionAuthentication',  # default
+        'rest_framework.authentication.BasicAuthentication',  # default
+        'authentication.authentication.FirebaseAuthentication',
+    ),
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -123,3 +132,6 @@ STATIC_URL = '/static/'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+KEYFILES_DIR = os.path.join(BASE_DIR, 'keyfiles')
+FIREBASE_KEY = 'voicee-8e33b-firebase-adminsdk-575q2-223ca4a969.json'
