@@ -25,7 +25,7 @@ SECRET_KEY = '-$wlap3p65znz!=&*v4pgbow=o*h+$i)%ly6tf@3!f@*($clx5'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.1.3']
+ALLOWED_HOSTS = ['192.168.1.3','voicee.pythonanywhere.com']
 
 
 # Application definition
