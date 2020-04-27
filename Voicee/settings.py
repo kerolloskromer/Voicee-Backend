@@ -133,5 +133,6 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
-KEYFILES_DIR = os.path.join(BASE_DIR, 'keyfiles')
-FIREBASE_KEY = 'voicee-8e33b-firebase-adminsdk-575q2-223ca4a969.json'
+THIS_FOLDER = os.path.dirname(os.path.abspath(__file__))
+FIREBASE_KEY = os.path.join(
+    THIS_FOLDER, 'voicee-8e33b-firebase-adminsdk-575q2-223ca4a969.json')
