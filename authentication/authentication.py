@@ -17,5 +17,5 @@ class FirebaseAuthentication(BaseFirebaseAuthentication):
 
     def get_django_user(self, firebase_user_record):
         return get_user_model().objects.get_or_create(
-            username=firebase_user_record.uid,
+            firebaseUid=firebase_user_record.uid,
         )[0]
