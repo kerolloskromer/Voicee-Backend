@@ -60,6 +60,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+AUTH_USER_MODEL = 'authentication.User' 
+
 ROOT_URLCONF = 'Voicee.urls'
 
 TEMPLATES = [
