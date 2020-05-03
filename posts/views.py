@@ -7,7 +7,6 @@ from authentication.authentication import FirebaseAuthentication
 
 class PostView(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated,)
-    authentication_classes = (FirebaseAuthentication,)
 
     queryset = Post.objects.all()
     serializer_class = PostSerializer
