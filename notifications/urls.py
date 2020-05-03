@@ -4,13 +4,13 @@ from . import views
 
 urlpatterns = [
     url(
-        regex=r'^notifications/fcm/?$',
+        regex=r'^notifications/register/?$',
         view=views.RegisterFCM.as_view(),
         name='register-fcm'
     ),
     url(
-        regex=r'^notifications/fcm/deregister?$',
-        view=views.DeregisterFCM.as_view(),
-        name='deregister-fcm'
+        regex=r'^notifications/?$',
+        view=views.NotificationListView.as_view(),
+        name='notifications-list'
     ),
 ]

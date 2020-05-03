@@ -187,3 +187,10 @@ class FCMDeviceToken(models.Model):
                 'user': self.user,
                 'data': json.dumps(body.get('data', ''))
             })
+
+
+class Notification(models.Model):
+    text = models.TextField(blank=False,null=False)
+
+    def __str__(self):
+        return self.text

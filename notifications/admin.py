@@ -1,6 +1,7 @@
 from django.contrib import admin
 
-from .models import FCMDeviceToken
+from .models import FCMDeviceToken, Notification
+
 
 class DeviceTokenAdmin(admin.ModelAdmin):
     date_hierarchy = 'updated_at'
@@ -43,10 +44,15 @@ class DeviceTokenAdmin(admin.ModelAdmin):
         return []
 
     def send_test_notification(self, request, queryset):
+        title = 'Test notification'
         body = FCMDeviceToken.construct_body(
-            'Test notification', 'test', 'This is a test notification', None)
+            title, 'test', 'This is a test notification', None)
         for token in queryset:
             token.send_notification(body)
+        notification = Notification()
+        notification.text = title
+        notification.save()
     send_test_notification.short_description = "Send test notification"
 
 admin.site.register(FCMDeviceToken,DeviceTokenAdmin)
+admin.site.register(Notification)

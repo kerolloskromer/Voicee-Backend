@@ -1,10 +1,10 @@
 from django.db import IntegrityError
-from rest_framework.generics import CreateAPIView, UpdateAPIView
+from rest_framework.generics import CreateAPIView, UpdateAPIView,ListAPIView
 from rest_framework.mixins import UpdateModelMixin
 from rest_framework.permissions import IsAuthenticated
 
-from .models import FCMDeviceToken
-from .serializers import FCMDeviceTokenSerializer
+from .models import FCMDeviceToken,Notification
+from .serializers import FCMDeviceTokenSerializer,NotificationSerializer
 
 
 class RegisterFCM(CreateAPIView, UpdateModelMixin):
@@ -33,8 +33,8 @@ class RegisterFCM(CreateAPIView, UpdateModelMixin):
 
 
 class DeregisterFCM(UpdateAPIView):
-    serializer_class = FCMDeviceTokenSerializer
     permission_classes = (IsAuthenticated,)
+    serializer_class = FCMDeviceTokenSerializer
 
     def get_object(self):
         return FCMDeviceToken.objects.get(
@@ -42,3 +42,9 @@ class DeregisterFCM(UpdateAPIView):
 
     def perform_update(self, serializer):
         serializer.save(user=self.request.user)
+
+class NotificationListView(ListAPIView):
+    permission_classes = (IsAuthenticated,)
+
+    queryset = Notification.objects.all()
+    serializer_class = NotificationSerializer
