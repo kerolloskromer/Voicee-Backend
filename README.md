@@ -1,4 +1,4 @@
-Sample Django backend demonstrating some features
+Sample Django backend project demonstrating some features
 
 ## Features
 
